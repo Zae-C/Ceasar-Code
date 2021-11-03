@@ -1,31 +1,48 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ceasar", "Ceasar.vcxproj", "{1C05C7C7-168D-4FAA-A48E-0D8A148383A2}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1C05C7C7-168D-4FAA-A48E-0D8A148383A2}.Debug|x64.ActiveCfg = Debug|x64
-		{1C05C7C7-168D-4FAA-A48E-0D8A148383A2}.Debug|x64.Build.0 = Debug|x64
-		{1C05C7C7-168D-4FAA-A48E-0D8A148383A2}.Debug|x86.ActiveCfg = Debug|Win32
-		{1C05C7C7-168D-4FAA-A48E-0D8A148383A2}.Debug|x86.Build.0 = Debug|Win32
-		{1C05C7C7-168D-4FAA-A48E-0D8A148383A2}.Release|x64.ActiveCfg = Release|x64
-		{1C05C7C7-168D-4FAA-A48E-0D8A148383A2}.Release|x64.Build.0 = Release|x64
-		{1C05C7C7-168D-4FAA-A48E-0D8A148383A2}.Release|x86.ActiveCfg = Release|Win32
-		{1C05C7C7-168D-4FAA-A48E-0D8A148383A2}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C8D3639D-BB04-4B72-9518-41B7C3A2C5EF}
-	EndGlobalSection
-EndGlobal
+﻿#include<iostream>
+#include<string>
+using namespace std;
+int main() {
+    //set up variables----------------------------------------------------
+    string input;
+    string message;
+    char coded[100];
+    char decoded[100];
+    int key;
+
+    //get user inputs----------------------------------------------------
+    do {
+        cout << "Would you like to encrypt/decrypt a message, or quit?" << endl;
+        cin >> input;
+        if (input == "encrypt") {
+            cout << "What is your message?" << endl;
+            cin >> message;
+            cout << "What is your key?(Amount of letters your message will shift)" << endl;
+            cin >> key;
+            cout << endl << endl;
+
+            for (int i = 0; i < message.size(); i++) {
+                coded[i] = message[i] + key;
+            }
+
+            cout << "encoded message:" << endl;
+            cout << coded;
+            cout << endl << endl;
+        }
+        if (input == "decrypt") {
+
+            cout << "What is your message?" << endl;
+            cin >> message;
+            cout << "What is your key?(Amount of letters your message will shift)" << endl;
+            cin >> key;
+            cout << endl << endl;
+
+
+            for (int i = 0; i < message.size(); i++) {
+                decoded[i] = message[i] - key;
+            }
+            cout << "decoded message:" << endl;
+            cout << decoded;
+            cout << endl << endl;
+        }
+    } while (input != "quit");
+}
